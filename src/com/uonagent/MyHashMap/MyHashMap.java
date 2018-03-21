@@ -27,26 +27,52 @@ public class MyHashMap<K, V> implements Map<K, V> {
     }
   }
 
+  /**
+   * Default constructor creates hash table with 8196 elements
+   */
   public MyHashMap() {
     TABLE_CAPACITY = 8196;
     hashTable = new Object[TABLE_CAPACITY];
   }
 
+  /**
+   * Constructor, where user can change initial capacity of hash table
+   *
+   * @param initialCapacity capacity of hash table
+   */
   public MyHashMap(int initialCapacity) {
     TABLE_CAPACITY = initialCapacity;
     hashTable = new Object[TABLE_CAPACITY];
   }
 
+  /**
+   * Returns the number of elements in this map
+   *
+   * @return the number of elements in this map
+   */
   @Override
   public int size() {
     return size;
   }
 
+  /**
+   * Returns <tt>true</tt> if there's no elements in this map
+   *
+   * @return <tt>true</tt> if there's no elements in this map
+   */
   @Override
   public boolean isEmpty() {
     return size == 0;
   }
 
+  /**
+   * Returns <tt>true</tt> if this map contains a mapping for the
+   * specified key.
+   *
+   * @param   key   The key whose presence in this map is to be tested
+   * @return <tt>true</tt> if this map contains a mapping for the specified
+   * key.
+   */
   @Override
   @SuppressWarnings("unchecked")
   public boolean containsKey(Object key) {
@@ -60,6 +86,14 @@ public class MyHashMap<K, V> implements Map<K, V> {
     return false;
   }
 
+  /**
+   * Returns <tt>true</tt> if this map maps one or more keys to the
+   * specified value.
+   *
+   * @param value value whose presence in this map is to be tested
+   * @return <tt>true</tt> if this map maps one or more keys to the
+   *         specified value
+   */
   @Override
   @SuppressWarnings("unchecked")
   public boolean containsValue(Object value) {
@@ -77,6 +111,12 @@ public class MyHashMap<K, V> implements Map<K, V> {
     return false;
   }
 
+  /**
+   * Returns the object associated with key, otherwise <tt>null</tt>
+   *
+   * @param key
+   * @return the object associated with key, otherwise <tt>null</tt>
+   */
   @Override
   @SuppressWarnings("unchecked")
   public V get(Object key) {
@@ -91,6 +131,14 @@ public class MyHashMap<K, V> implements Map<K, V> {
     return r;
   }
 
+  /**
+   * Puts to this map new "key-value" pair. If there is existing element with
+   * such key, old value will be replaced by new value
+   *
+   * @param key
+   * @param value
+   * @return previous value associated with key, otherwise <tt>null</tt>
+   */
   @Override
   @SuppressWarnings("unchecked")
   public V put(K key, V value) {
@@ -119,6 +167,13 @@ public class MyHashMap<K, V> implements Map<K, V> {
     }
   }
 
+  /**
+   * Removes from this map element by key
+   *
+   * @param key
+   * @return value of element being removed. <tt>null</tt> if
+   * there's no such element with such key
+   */
   @Override
   @SuppressWarnings("unchecked")
   public V remove(Object key) {

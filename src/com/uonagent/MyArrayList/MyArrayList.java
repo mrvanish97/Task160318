@@ -12,10 +12,21 @@ public class MyArrayList<E> implements List<E> {
 
   private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
 
+  private static final int DEFAULT_ARRAY_SIZE = 10;
+
+  /**
+   * Default constructor. Creates new List based on array
+   * with DEFAULT_ARRAY_SIZE elements
+   */
   public MyArrayList() {
-    array = new Object[10];
+    array = new Object[DEFAULT_ARRAY_SIZE];
   }
 
+  /**
+   * Creates new List based on array
+   *
+   * @param capacity is initial capacity of array
+   */
   public MyArrayList(int capacity) {
     if (capacity == 0) {
       array = defaultArray;
@@ -31,16 +42,32 @@ public class MyArrayList<E> implements List<E> {
     System.arraycopy(data, 0, array, 0, data.length);
   }
 
+  /**
+   * Returns number of elements in list
+   *
+   * @return number of elements in list
+   */
   @Override
   public int size() {
     return size;
   }
 
+  /**
+   * Returns <tt>true</tt> if list doesn't contains any elements
+   *
+   * @return <tt>true</tt> if list doesn't contains any elements
+   */
   @Override
   public boolean isEmpty() {
     return size == 0;
   }
 
+  /**
+   * Checks for containing element o in list
+   *
+   * @param o
+   * @return index of element, otherwise -1, if there's no such element
+   */
   @Override
   public boolean contains(Object o) {
     return indexOf(o) != -1;
@@ -61,6 +88,12 @@ public class MyArrayList<E> implements List<E> {
     return null;
   }
 
+  /**
+   * Appends to this list new element
+   *
+   * @param e
+   * @return true
+   */
   @Override
   public boolean add(E e) {
     checkCapacityAndReallocate(size + 1);
@@ -68,6 +101,13 @@ public class MyArrayList<E> implements List<E> {
     return true;
   }
 
+  /**
+   * Finds and removes element from list and decrements index of all elements
+   * staying on the right side from removing element
+   *
+   * @param o
+   * @return <tt>true</tt> if element was removed
+   */
   @Override
   public boolean remove(Object o) {
     if (o == null) {
@@ -134,6 +174,9 @@ public class MyArrayList<E> implements List<E> {
     return false;
   }
 
+  /**
+   * Removes all elements in list
+   */
   @Override
   public void clear() {
     for (int i = 0; i < size; ++i) {
@@ -142,12 +185,25 @@ public class MyArrayList<E> implements List<E> {
     size = 0;
   }
 
+  /**
+   * Get element by index
+   *
+   * @param index
+   * @return element
+   */
   @Override
   public E get(int index) {
     checkRange(index);
     return getByIndex(index);
   }
 
+  /**
+   * Replaces element in list by index
+   *
+   * @param index of replacing element
+   * @param element new element
+   * @return old value
+   */
   @Override
   public E set(int index, E element) {
     checkRange(index);
@@ -158,9 +214,15 @@ public class MyArrayList<E> implements List<E> {
 
   @Override
   public void add(int index, E element) {
-
   }
 
+  /**
+   * Removes element from list and decrements index of all elements
+   * staying on the right side from removing element
+   *
+   * @param index of removing element
+   * @return old value
+   */
   @Override
   public E remove(int index) {
     checkRange(index);
@@ -169,6 +231,12 @@ public class MyArrayList<E> implements List<E> {
     return r;
   }
 
+  /**
+   * Returns index of element in list.
+   *
+   * @param o
+   * @return index of element in list. -1 if there's no such element
+   */
   @Override
   public int indexOf(Object o) {
     for (int i = 0; i < size; ++i) {
@@ -225,6 +293,14 @@ public class MyArrayList<E> implements List<E> {
     }
   }
 
+  /**
+   * Returns string representation of list
+   * [elem1, elem2, ..., elemN]
+   * For each elemI method toString is called to receive
+   * its string representation
+   *
+   * @return string representation
+   */
   @Override
   public String toString() {
     StringBuilder stringBuilder = new StringBuilder("");
